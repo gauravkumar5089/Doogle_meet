@@ -6,14 +6,19 @@ const server = require("http").createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 const { ExpressPeerServer } = require("peer");
+// const { currentTime } = require("./date");
 const peerServer = ExpressPeerServer(server, { debug: true });
+
+const date = require(__dirname + "/date.js");
+const currentDay = date.currentDay();
+const currentTime = date.currentTime();
 
 app.use("/peerjs", peerServer);
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index", { day: currentDay, time: currentTime });
 });
 
 app.get("/room", (req, res) => {
@@ -24,8 +29,10 @@ app.get("/:roomId", (req, res) => {
   res.render("room", { roomId: req.params.roomId });
 });
 
-server.listen(3030, () => {
-  console.log("Server is running on port 3030");
+const port = 8080;
+
+server.listen(port, () => {
+  console.log("Server is running on port " + port);
 });
 
 io.on("connection", (socket) => {

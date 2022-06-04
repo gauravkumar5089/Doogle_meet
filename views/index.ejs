@@ -5,13 +5,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Meet Clone</title>
+    <title>Doogle Meet Clone</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <h1 class="text-purple-800 font-bold text-9xl">Hello world</h1>
-    <a href="/room" class="text-red-900 mt-56">CLICK FOR NEW MEETING</a>
+<body class="text-gray-600">
+    <!-- Navbar -->
+    <div class="flex flex-wrap justify-center md:justify-between gap-x-8 gap-y-4 items-center px-6 py-2 text-xl  shadow-md top-0 ">
+        <span class="flex gap-4 items-center">
+            <span class="rounded-full bg-violet-800 p-2 text-white">
+                <svg class="h-6 w-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z">
+                    </path>
+                </svg>
+            </span>
+            <span class="text-2xl font-bold">Doogle Meet</span>
+        </span>
+        <span>
+
+            <%= time %>
+                <!-- Time is not dynamicaly changing can be implemented later -->
+                <%=day%>
+        </span>
+    </div>
+
+    <!-- Main block -->
+    <div class="flex flex-col md:flex-row text-center md:text-left mt-0 md:mt-16 px-12 lg:px-24 py-24 gap-16 lg:gap-32 ">
+        <div class="flex flex-col gap-8 lg:pr-16">
+            <!-- left -->
+            <h1 class="text-5xl text-purple-900">Premium video meetings. Now free for everyone</h1>
+            <h3 class="text-xl"> We re-engineered the service we built for secure business meetings, Google Meet, to
+                make it free and available for all.</h3>
+            <div class="flex gap-4 justify-center md:justify-start flex-wrap">
+                <a class=" bg-purple-700 border-purple-700 border-2 text-white px-3 py-2" href="/room">Start a new
+                    meeting</a>
+                <input class="border-purple-700 border-2 px-3 py-2" type="text" placeholder="Join by meeting code">
+            </div>
+        </div>
+        <div class="">
+            <!-- right -->
+            <img class="object-cover h-full" src="/img/meeting.svg" alt="">
+        </div>
+    </div>
 </body>
 
 </html>
