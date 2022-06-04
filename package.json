@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-css": "tailwind build src/styles.css -o public/styles.css"
+    
+    "build-css": "npx tailwindcss -i ./public/tailwind.css -o ./public/style.css --watch"
   },
   "author": "Gaurav",
   "license": "ISC",
@@ -14,7 +15,13 @@
     "peer": "^0.6.1",
     "peerjs": "^1.4.5",
     "socket.io": "^4.5.1",
-    "tailwindcss": "^3.0.24",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "vite": "^2.9.9"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.14",
+    "postcss-cli": "^9.1.0",
+    "tailwindcss": "^3.0.24"
   }
 }

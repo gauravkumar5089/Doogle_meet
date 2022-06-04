@@ -8,8 +8,8 @@ const peer = new Peer(undefined, {
 });
 
 const peers = {};
-
-// let localStream;
+//user who started the call is not in this array but should be 
+//will implement later
 
 function getLocalStream() {
   navigator.mediaDevices
@@ -39,12 +39,10 @@ function getLocalStream() {
 }
 
 socket.on("user-disconnected", (userId) => {
-  // console.log(userId);
   if (peers[userId]) peers[userId].close();
 });
 
 function connectNewUser(userId, localStream) {
-  // console.log("New user connected with id: " + userId);
   const call = peer.call(userId, localStream);
   const video = document.createElement("video");
   call.on("stream", (remoteStream) => {
