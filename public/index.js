@@ -1,8 +1,6 @@
 const videoGrid = document.querySelector(".video-grid");
 const socket = io("/");
 
-console.log(Peer);
-
 const peer = new Peer(undefined, {
   path: "/peerjs",
   host: "/",
@@ -42,7 +40,7 @@ function getLocalStream() {
 
 socket.on("user-disconnected", (userId) => {
   // console.log(userId);
-  if(peers[userId])peers[userId].close();
+  if (peers[userId]) peers[userId].close();
 });
 
 function connectNewUser(userId, localStream) {
@@ -76,3 +74,30 @@ peer.on("open", (userId) => {
 });
 
 getLocalStream();
+
+//Chat functionallity
+
+const text = document.getElementById("message");
+
+document.addEventListener("keydown", function (e) {
+  if (e.code == "Enter" && text.value != "") {
+    console.log(text.value);
+    socket.emit("chat-message", text.value);
+    text.value = "";
+  }
+});
+
+socket.on("createMessage", (message) => {
+  const messageList = document.getElementById("message-list");
+  messageList.append(createMessage(message));
+  console.log("From server " + message);
+});
+
+function createMessage(message) {
+  const li = document.createElement("li");
+  li.innerHTML = `
+  <b>User</b>
+  <br>
+  <p>${message}</p>`;
+  return li;
+}

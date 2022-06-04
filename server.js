@@ -13,6 +13,10 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
+  res.render("index");
+});
+
+app.get("/room", (req, res) => {
   res.redirect(`/${uuidv4()}`);
 });
 
@@ -32,6 +36,11 @@ io.on("connection", (socket) => {
 
     socket.on("disconnect", () => {
       socket.to(roomId).emit("user-disconnected", userId);
+    });
+
+    socket.on("chat-message", (message) => {
+      console.log(message);
+      io.to(roomId).emit("createMessage", message);
     });
   });
 });
