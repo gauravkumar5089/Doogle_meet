@@ -18,30 +18,76 @@
 
     <script src="index.js" defer></script>
 
+    <!-- font awesome -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="grid.css">
 
 
 </head>
 
 <body>
-    <div class="main">
-        <div class="video">
-            <div class="video-grid">
 
-            </div>
+    <div class="h-[90vh] flex">
+        <!-- video part -->
+        <div class="bg-gray-100 video-grid gap-2 flex flex-wrap flex-1 justify-center content-center basis-4/5">
+            <!-- <video class="object-cover" src=""></video> -->
         </div>
-        <div class="chat">
-            <h3>Chat</h3>
-            <div class="messages">
-                <ul id="message-list">
 
-                </ul>
+        <!-- message part -->
+        <div class="basis-1/5 flex-1 resize-x">
+            <div class="chat shadow h-full">
+                <h3 class="text-4xl font-bold text-white bg-purple-700  px-4 py-4">Chat</h3>
+                <div class="messages px-4">
+                    <ul id="message-list">
+                        <li>
+                            <p class="text-gray-400 my-2 text-lg">User</p>
+                            <span class="rounded-2xl inline-block bg-violet-400 text-white font-semibold text-xl px-4
+                                py-2 w-">
+                                !</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <input class="bg-purple-200 text-gray-700 w-full px-4 py-1" id="message" type="text" name="message"
+                        placeholder="Type your message.." value="">
+                </div>
             </div>
-            <input id="message" type="text" name="message" value="">
         </div>
     </div>
+    <div class="bg-purple-900 h-[10vh] flex justify-between content-center">
+        <div class=""></div>
+        <div class="flex justify-center content-center text-white py-8 text-2xl">
+            <h3 class="">
+                <!-- <i class="fa-solid fa-microphone"></i> -->
+                <i onclick="toggleMute()"
+                    id = "mic"
+                    class="mx-6 cursor-pointer hover:scale-150 transition-all ease-in fa-solid fa-microphone-slash text-red-700"></i>
+                <!-- <i class="fa-solid fa-video"></i> -->
+                <i onclick="toggleVideo()"
+                    class="mx-6 cursor-pointer hover:scale-150 transition-all ease-in fa-solid fa-video-slash"></i>
+                <i onclick="leave()"
+                    class="mx-6 cursor-pointer hover:scale-150 transition-all ease-in fa-solid fa-phone text-red-700"></i>
+            </h3>
+        </div>
+        <div class="">
+        </div>
+        <!-- controls -->
+    </div>
+    </div>
+
+
+
 
 </body>
 

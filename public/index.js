@@ -8,7 +8,7 @@ const peer = new Peer(undefined, {
 });
 
 const peers = {};
-//user who started the call is not in this array but should be 
+//user who started the call is not in this array but should be
 //will implement later
 
 function getLocalStream() {
@@ -16,8 +16,9 @@ function getLocalStream() {
     .getUserMedia({ video: true, audio: true })
     .then((localStream) => {
       const video = document.createElement("video");
+      video.classList.add("local");
       video.muted = true;
-      handleStream(video, localStream);
+      handleStream(video, localStream);  
       socket.on("user-connected", (userId) => {
         connectNewUser(userId, localStream);
       });
@@ -57,8 +58,6 @@ function connectNewUser(userId, localStream) {
 }
 
 function handleStream(video, stream) {
-  // const video = document.createElement("video");
-  // video.muted = true;
   video.srcObject = stream;
   video.addEventListener("loadedmetadata", () => {
     video.play();
@@ -93,9 +92,27 @@ socket.on("createMessage", (message) => {
 
 function createMessage(message) {
   const li = document.createElement("li");
+  console.log("calledCreateMessage");
   li.innerHTML = `
-  <b>User</b>
-  <br>
-  <p>${message}</p>`;
+  <p class = "text-gray-400 my-2 text-lg">User</p>
+  <span class = "rounded-2xl inline-block w-auto bg-violet-400 text-white font-semibold text-xl px-4
+  py-2">${message}</span>`;
   return li;
 }
+
+// function toggleVideo() {
+//   navigator.mediaDevices.getUserMedia({video: true, audio: true}).then(stream => {
+//     const video = document.querySelector(".local");
+//     video.srcObject = stream;
+//     video.play();
+//   }
+// }
+// function toggleMute() {
+//   const video = document.querySelector("video.local");
+//   console.log(video);
+//   const mic = document.querySelector("#mic");
+//   mic.classList.toggle("text-red-700");
+//   console.log(mic);
+//   // console.log("video muted");
+//   video.muted = !video.muted;
+// }

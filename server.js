@@ -6,8 +6,8 @@ const server = require("http").createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 const { ExpressPeerServer } = require("peer");
-// const { currentTime } = require("./date");
 const peerServer = ExpressPeerServer(server, { debug: true });
+// const { currentTime } = require("./date");
 
 const date = require(__dirname + "/date.js");
 const currentDay = date.currentDay();
@@ -29,7 +29,7 @@ app.get("/:roomId", (req, res) => {
   res.render("room", { roomId: req.params.roomId });
 });
 
-const port = 8080;
+const port = 3030;
 
 server.listen(port, () => {
   console.log("Server is running on port " + port);
